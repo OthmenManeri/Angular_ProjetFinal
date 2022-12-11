@@ -1,0 +1,38 @@
+<div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4"> 
+        <label>Categories </label> 
+        <select class="form-control form-control-lg"   id="idType" name="idType"
+         [(ngModel)]="IdType" (change)="onChange()">
+          <option *ngFor="let type of TypeList" value="{{type.idType}}">
+               {{type.nomType}} 
+         </option>
+    </select> 
+   </div>
+
+
+   
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr> <th>Id</th><th>Nom</th> <th>Prix</th> <th>Catégorie</th><th>Action</th> </tr>
+                </thead>
+                <tbody *ngFor="let meuble of meubles">
+                    <tr>
+                        <td>{{meuble.idMeuble}}</td>
+                        <td>{{meuble.nomMeuble}}</td>
+                        <td>{{meuble.prixMeuble}}</td>
+                        <td>{{meuble.type.nomType}}</td> 
+
+                        <td><a *ngIf="authService.isAdmin()"
+                            class="btn btn-danger" (click)="supprimerMeuble(meuble)">Supprimer</a></td>
+                       <td><a *ngIf="authService.isAdmin()"
+                            class="btn btn-success" [routerLink]="['/updateMeuble',meuble.idMeuble]">Modifier</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

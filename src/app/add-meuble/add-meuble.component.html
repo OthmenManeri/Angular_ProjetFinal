@@ -1,0 +1,32 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Meuble :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Meuble</label>
+            <input type="text" [(ngModel)]="newMeuble.idMeuble" name="idMeuble" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Meuble</label>
+            <input type="text" [(ngModel)]="newMeuble.nomMeuble" name="nomMeuble" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix Meuble</label>
+            <input type="number" [(ngModel)]="newMeuble.prixMeuble" name="prixMeuble" class="form-control">
+        </div>
+       
+
+         <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Type</label>
+            <select class="form-control form-control-lg" id="idType" name="idType" [(ngModel)]="newIdType">
+                <option *ngFor="let type of TypeList" [value]="type.idType">
+                    {{type.nomType}}
+                </option>
+            </select>
+        </div> 
+        <div class="mt-2">
+            <button type="submit" (click)="addMeuble()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>
